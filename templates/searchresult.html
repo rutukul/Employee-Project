@@ -1,0 +1,98 @@
+{% load static %}
+<!DOCTYPE html>
+<style>
+.header {
+	padding-bottom: 20px;
+	margin-bottom: 10px;
+	border-bottom : 1px solid #dee7ec;
+	background-color : blue;
+}
+.header_logo {
+	float: left;	
+	font-size: 36px;
+	padding: 20px 40px;
+}
+.header_list li {	
+	float: left;
+	list-style: none;  
+	padding: 33px 20px;
+}
+.header a{
+    text-size:25px;
+    
+}
+register-form {
+	text-align: center;
+}
+.register-form {
+	padding-top: 100px;
+}
+
+input {
+	width: 400px;
+	margin-top:10px;
+	margin-bottom:30px;
+	padding:20px;
+	font-size:18px;
+	border: 1px solid #dee7ec;
+}
+
+submit{ 
+	background-color:#dee7ec;  
+	color:#889eab;
+}
+contact-form {
+	padding:100px;
+	margin:50px 50px;
+}
+
+.copy-container {
+	display: block;
+	margin:8px;
+	border-bottom: 2px solid #dee7ec;
+	font-size:50px;
+	text-align:center;
+}
+contact-form{
+	float: center;
+}
+.form {
+	text-align: center;
+}
+.msg h3{
+	color: #ff0000;
+}
+#details{
+    font-size:25px;
+}
+</style>
+<html>
+<head>
+<meta charset = "utf-8">
+<meta http-equiv='X-UA-Compatible' content='IE=Edge'>
+<title>Login</title>
+<meta name = "viewport" content = 'width=device-width, initial-scale=1'>
+</head>
+<body>
+<div class = "header">
+<h2>Employee Portal</h2>
+<a href="/"><b>Home</b></a>
+</div>
+<br>
+
+<table id = "mytable" style = " width:1400px;text-align:center;">
+            <tr>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>More Details</th>
+            </tr>
+            {% for employee in info %}
+            <tr>
+                <td>{{employee.first_name}}</td>
+                <td>{{employee.last_name}}</td>
+                <form method="post">{% csrf_token %}<td><button type="submit" name = "button" value = "{{ employee.id }}">View Details</button></td></form>
+            </tr>
+            {% endfor %}
+        </table>
+</body>
+</html>
